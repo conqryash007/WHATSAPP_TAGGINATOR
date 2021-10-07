@@ -15,84 +15,96 @@
 //   }
 // };
 
-//////////////////
+/////////////////////////
 
-function simulate(element, eventName) {
-  var options = extend(defaultOptions, arguments[2] || {});
-  var oEvent,
-    eventType = null;
-
-  for (var name in eventMatchers) {
-    if (eventMatchers[name].test(eventName)) {
-      eventType = name;
-      break;
-    }
-  }
-
-  if (!eventType)
-    throw new SyntaxError(
-      "Only HTMLEvents and MouseEvents interfaces are supported"
-    );
-
-  if (document.createEvent) {
-    oEvent = document.createEvent(eventType);
-    if (eventType == "HTMLEvents") {
-      oEvent.initEvent(eventName, options.bubbles, options.cancelable);
-    } else {
-      oEvent.initMouseEvent(
-        eventName,
-        options.bubbles,
-        options.cancelable,
-        document.defaultView,
-        options.button,
-        options.pointerX,
-        options.pointerY,
-        options.pointerX,
-        options.pointerY,
-        options.ctrlKey,
-        options.altKey,
-        options.shiftKey,
-        options.metaKey,
-        options.button,
-        element
-      );
-    }
-    element.dispatchEvent(oEvent);
-  } else {
-    options.clientX = options.pointerX;
-    options.clientY = options.pointerY;
-    var evt = document.createEventObject();
-    oEvent = extend(evt, options);
-    element.fireEvent("on" + eventName, oEvent);
-  }
-  return element;
+function simulateMouseEvents(element, eventName) {
+  var mouseEvent = document.createEvent("MouseEvents");
+  mouseEvent.initEvent(eventName, true, true);
+  element.dispatchEvent(mouseEvent);
 }
 
-function extend(destination, source) {
-  for (var property in source) destination[property] = source[property];
-  return destination;
+/*Schedule your message section starts here
+var now = new Date();
+
+// Replace Hours, Mins and secs with your
+// desired time in 24 hour time format e.g.
+// var rt = new Date(now.getFullYear(), now.getMonth(),
+// now.getDate(), Hours, Minutes, Sec, 0) - now;
+// to send message at 2.30PM
+var rt = new Date(now.getFullYear(), now.getMonth(),
+				now.getDate(), 14, 30, 00, 0) - now;
+
+
+
+if (rt < 0) {
+	rt += 86400000;
 }
 
-var eventMatchers = {
-  HTMLEvents:
-    /^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,
-  MouseEvents: /^(?:click|dblclick|mouse(?:down|up|over|move|out))$/,
-};
-var defaultOptions = {
-  pointerX: 0,
-  pointerY: 0,
-  button: 0,
-  ctrlKey: false,
-  altKey: false,
-  shiftKey: false,
-  metaKey: false,
-  bubbles: true,
-  cancelable: true,
+setTimeout(startTimer, rt);
+Schedule your message section ends here*/
+
+// Replace My Contact Name with the name
+// of your WhatsApp contact or group e.g. title="Peter Parker"
+
+//===
+// let name = "My Contact Name";
+
+// simulateMouseEvents(
+//   document.querySelector('[title="' + name + '"]'),
+//   "mousedown"
+// );
+
+// function startTimer() {
+//   setTimeout(myFunc, 3000);
+// }
+
+// startTimer();
+
+//===
+
+var eventFire = (MyElement, ElementType) => {
+  var MyEvent = document.createEvent("MouseEvents");
+  MyEvent.initMouseEvent(
+    ElementType,
+    true,
+    true,
+    window,
+    0,
+    0,
+    0,
+    0,
+    0,
+    false,
+    false,
+    false,
+    false,
+    0,
+    null
+  );
+  MyElement.dispatchEvent(MyEvent);
 };
 
-/////////////////
+function myFunc() {
+  messageBox = document.querySelectorAll("[contenteditable='true']")[1]; //text box
+
+  message = "My Message"; // Replace My Message with your message use  to add spaces to your message
+
+  counter = 5; // Replace 5 with the number of times you want to send your message
+
+  for (i = 0; i < counter; i++) {
+    let event = document.createEvent("UIEvents");
+    messageBox.innerHTML = message.replace(/ /gm, ""); // test it
+    event.initUIEvent("input", true, true, window, 1);
+    messageBox.dispatchEvent(event);
+    event.initUIEvent("click", true, true, window, 1);
+    messageBox.dispatchEvent(event);
+    eventFire(document.querySelector('span[data-icon="send"]'), "click");
+  }
+}
+
+/////////////////////////
+
 let arr = [];
-let box;
 const getuser = () => {
   const user =
     document.querySelectorAll("header")[1].childNodes[1].childNodes[1]
@@ -104,14 +116,37 @@ const getuser = () => {
   arr = arr.map((str) => {
     return `@${str}`;
   });
-  box = document.querySelector(
-    "#main > footer > div._2BU3P.tm2tP.copyable-area > div > div > div._2lMWa > div.p3_M1 > div > div._13NKt.copyable-text.selectable-text"
-  );
-  box.textContent = `${arr[0]}`;
+  let messageBox = document.querySelectorAll("[contenteditable='true']")[1]; //text box
   // console.log(arr);
   // console.log(box);
-  simulate(box, "click");
+  let inptext = `  `;
+  for (let i = 0; i < arr.length - 1; i++) {
+    inptext += `Hello `;
+    inptext += arr[i];
+    inptext += `
+  `;
+    let event = document.createEvent("UIEvents");
+    messageBox.innerHTML = inptext;
+    event.initUIEvent("input", true, true, window, 1);
+    messageBox.dispatchEvent(event);
+    // eventFire(document.querySelector('span[data-icon="send"]'), "click");
+  }
+  messageBox.addEventListener("click", () => {
+    const ke = new KeyboardEvent("keydown", {
+      bubbles: true,
+      cancelable: true,
+      keyCode: 13,
+    });
+    messageBoxch.dispatchEvent(ke);
+  });
 };
+
+// let box = document.querySelectorAll("[contenteditable='true']")[1];
+// box.addEventListener("click", () => {
+//   eventFire(document.querySelectorAll("[contenteditable='true']")[1], "click");
+//   console.log("lauda");
+// });
+
 let createButton = {
   create() {
     let $ = document;
