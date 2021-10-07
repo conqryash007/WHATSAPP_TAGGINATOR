@@ -23,45 +23,6 @@ function simulateMouseEvents(element, eventName) {
   element.dispatchEvent(mouseEvent);
 }
 
-/*Schedule your message section starts here
-var now = new Date();
-
-// Replace Hours, Mins and secs with your
-// desired time in 24 hour time format e.g.
-// var rt = new Date(now.getFullYear(), now.getMonth(),
-// now.getDate(), Hours, Minutes, Sec, 0) - now;
-// to send message at 2.30PM
-var rt = new Date(now.getFullYear(), now.getMonth(),
-				now.getDate(), 14, 30, 00, 0) - now;
-
-
-
-if (rt < 0) {
-	rt += 86400000;
-}
-
-setTimeout(startTimer, rt);
-Schedule your message section ends here*/
-
-// Replace My Contact Name with the name
-// of your WhatsApp contact or group e.g. title="Peter Parker"
-
-//===
-// let name = "My Contact Name";
-
-// simulateMouseEvents(
-//   document.querySelector('[title="' + name + '"]'),
-//   "mousedown"
-// );
-
-// function startTimer() {
-//   setTimeout(myFunc, 3000);
-// }
-
-// startTimer();
-
-//===
-
 var eventFire = (MyElement, ElementType) => {
   var MyEvent = document.createEvent("MouseEvents");
   MyEvent.initMouseEvent(
@@ -119,17 +80,29 @@ const getuser = () => {
   let messageBox = document.querySelectorAll("[contenteditable='true']")[1]; //text box
   // console.log(arr);
   // console.log(box);
-  let inptext = `  `;
+  let inptext = `    `;
   for (let i = 0; i < arr.length - 1; i++) {
     inptext += `Hello `;
     inptext += arr[i];
     inptext += `
-  `;
+    `;
     let event = document.createEvent("UIEvents");
     messageBox.innerHTML = inptext;
     event.initUIEvent("input", true, true, window, 1);
     messageBox.dispatchEvent(event);
-    // eventFire(document.querySelector('span[data-icon="send"]'), "click");
+    // let evt = new MouseEvent("click", {
+    //   view: window,
+    //   bubbles: true,
+    //   cancelable: true,
+    //   clientX: 20,
+    // });
+    // messageBox.dispatchEvent(evt);
+    // const ke = new KeyboardEvent("keydown", {
+    //   bubbles: true,
+    //   cancelable: true,
+    //   keyCode: 13,
+    // });
+    // messageBox.dispatchEvent(ke);
   }
   messageBox.addEventListener("click", () => {
     const ke = new KeyboardEvent("keydown", {
@@ -141,19 +114,13 @@ const getuser = () => {
   });
 };
 
-// let box = document.querySelectorAll("[contenteditable='true']")[1];
-// box.addEventListener("click", () => {
-//   eventFire(document.querySelectorAll("[contenteditable='true']")[1], "click");
-//   console.log("lauda");
-// });
-
 let createButton = {
   create() {
     let $ = document;
     let exportButton = $.createElement("button");
     let $$ = exportButton.style;
     exportButton.id = "ExportButton";
-    exportButton.innerText = "EXPORT";
+    exportButton.innerText = "Tag User";
     $$.zIndex = "999";
     $$.height = "42px";
     $$.width = "88px";
