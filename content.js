@@ -137,7 +137,7 @@ const getuser = () => {
       cancelable: true,
       keyCode: 13,
     });
-    messageBoxch.dispatchEvent(ke);
+    messageBox.dispatchEvent(ke);
   });
 };
 
