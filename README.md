@@ -14,7 +14,9 @@ git clone https://github.com/conqryash007/WAP-easy-tagger-bot.git
 chrome://extensions/
 ```
   4. Toggle the `Developer mode` on the top right corner
-  5. Click on `Load unpacked` and select the cloned file 
+  5. Click on `Load unpacked` and select the cloned file <br>
+  
+  [follow similar steps for other browsers]
 <hr> 
 
 ### 🐱‍💻HAPPY HACKING🐱‍💻  
