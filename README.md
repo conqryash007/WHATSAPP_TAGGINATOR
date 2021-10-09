@@ -1,4 +1,4 @@
-# WhatsApp Tagger Bot
+# 📌WhatsApp Tagger Bot📌
 WhatsApp bot for easy tagging multiple users in group.
 <hr>
 
