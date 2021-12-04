@@ -1,4 +1,4 @@
-# 📌WHATSAPP_TAGINATOR📌
+# 📌WHATSAPP_TAGGINATOR📌
 WhatsApp bot for easy tagging multiple users in group.
 <hr>
 
