@@ -18,5 +18,6 @@ chrome://extensions/
   
   [follow similar steps for other browsers]
 <hr> 
-(Naming credits - Dr. H. Doofenshmirtz)...XD
+(Naming credits - Dr. H. Doofenshmirtz)...XD<br/>
+
 ### 🐱‍💻HAPPY HACKING🐱‍💻  
