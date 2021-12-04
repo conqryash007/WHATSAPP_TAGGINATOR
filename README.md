@@ -1,4 +1,4 @@
-# 📌WhatsApp Tagger Bot📌
+# 📌WHATSAPP_TAGINATOR📌
 WhatsApp bot for easy tagging multiple users in group.
 <hr>
 
@@ -18,5 +18,5 @@ chrome://extensions/
   
   [follow similar steps for other browsers]
 <hr> 
-
+(Naming credits - Dr. H. Doofenshmirtz)...XD
 ### 🐱‍💻HAPPY HACKING🐱‍💻  
